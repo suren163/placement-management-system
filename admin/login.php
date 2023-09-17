@@ -84,7 +84,7 @@
           <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
         </div>
       </div>
-      <button type="submit" name="submit" class="btn btn-primary btn-block">Login</button>
+      <button type="submit" name="submit" id="submit" class="btn btn-primary btn-block">Login</button>
       <div class="error-message mt-3" id="error-message"></div>
       <div class="back-to-home mt-3"><a href="../home.php">Back to Home</a></div>
     </form>
