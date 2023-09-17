@@ -1,4 +1,13 @@
 <?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+
 session_start();
 include('./database/db.php');
 include('./alert.php');
@@ -47,7 +56,48 @@ if (isset($_POST['submit'])) {
                 // Update the profile photo path in the database
                 $updatePhotoQuery = "INSERT INTO pdf (s_id,c_id,resume) VALUES ($idd,$id,'$uploadPath')";
                 mysqli_query($con, $updatePhotoQuery);
-                header('location:applied.php');
+                $mail = new PHPMailer(true);
+
+                $email = $userData['email'];
+                try {
+                    $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+                    $mail->isSMTP();
+                    $mail->Host       = 'smtp.gmail.com';
+                    $mail->SMTPAuth   = true;
+                    $mail->Username   = 'surendhaar5963@gmail.com';
+                    $mail->Password   = 'tvxvjvmyadutjmnv';
+                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+                    $mail->Port       = 465;
+
+                    $mail->setFrom('from@example.com', 'SJC Placement Cell');
+                    $mail->addAddress($email);
+                    $msg = "<html>
+                    <head>
+                      <title>SJC Placement Cell</title>
+                    </head>
+                    <body>
+                      <h2>Successfully Applied</h2>
+                      <p>Dear{$userData['name']}</p>
+                      <p>You are just a few steps away from an exciting world of opportunities.</p>
+                      <p>We are always eager to have capable and fun-loving people onboard. Does that ring a bell? We too hope so and wish that your profile matches the opportunity you are seeking.</p>
+                      <p><strong>Company Name:</strong> {$fetch['name']}</p>
+                      <p><strong>Job Role:</strong> {$fetch['title']}</p>
+                      <p><strong>Location:</strong> {$fetch['location']}</p>
+                      <p><strong>Description:</strong> {$fetch['details']}</p>
+                      <p>All the best.</p>
+                    </body>
+                    </html>
+                    ";
+
+                    $mail->isHTML(true);
+                    $mail->Subject = 'Thank You for Applying ';
+                    $mail->Body    = $msg;
+
+                    $mail->send();
+                    echo "<script>alert('Successfully Applied');window.location='applied.php';</script>";
+                } catch (Exception $e) {
+                    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+                }
             }
         } else {
             echo "file size must be less than 500";
@@ -234,73 +284,77 @@ if (isset($_POST['submit'])) {
                 </div>
             </header>
             <main class='h-full overflow-y-auto'>
-
-                <br>
-                <div class='card' style='padding-left: 20px;margin:0 20px 0 20px ;'>
-                    <div class='card-body'>
-                        <h5 class='card-title'>Apply for</h5>
-                        <div class='card-text'>
-                            <p><strong>Company:</strong>
-                                <?php echo $fetch['name'];
-                                ?>
-                            </p>
-                            <p><strong>Job Title:</strong>
-                                <?php echo $fetch['title'];
-                                ?>
-                            </p <p><strong>Location:</strong>
-                            <?php echo $fetch['location'];
-                            ?>
-                            </p>
-                            <!-- Display other data here -->
+                <div class='container'>
+                    <br>
+                    <div class='card' style='padding-left: 20px;margin:0 20px 0 20px ;'>
+                        <div class='card-body'>
+                            <h5 class='card-title'>Apply for</h5>
+                            <table class='table'>
+                                <tr>
+                                    <th>Company</th>
+                                    <td><?php echo $fetch['name']; ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Job Title</th>
+                                    <td><?php echo $fetch['title']; ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Location</th>
+                                    <td><?php echo $fetch['location']; ?></td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
-                </div>
 
-                <div class='container d-flex justify-content-center align-items-center mt-5'>
-                    <div class='col-md-8'>
 
-                        <div class='p-4 bg-white text-dark rounded-lg shadow'>
-                            <h2 class='mb-4 text-2xl font-semibold'>
-                                Your Details
-                            </h2>
+                    <div class='container mt-3'>
+                        <div class='row justify-content-center'>
+                            <div class='col-md-8'>
+                                <div class='p-4 bg-white text-dark rounded-lg shadow'>
+                                    <h2 class='mb-4 text-2xl font-semibold'>
+                                        Your Details
+                                    </h2>
 
-                            <div class='mb-4'>
-                                <h1 class='text-lg font-semibold'>
-                                    Name: <?php echo $fet_stud['name']; ?>
-                                </h1>
-                                <p class='text-lg font-semibold'>
-                                    D no: <?php echo $fet_stud['dno']; ?>
-                                </p>
-                                <p class='text-lg font-semibold'>
-                                    Department: <?php echo isset($userData['major']) ? $userData['major'] : ''; ?>
-                                </p>
-                                <p class='text-lg font-semibold'>
-                                    Mobile Number: <?php echo isset($userData['phone']) ? $userData['phone'] : ''; ?>
-                                </p>
-                                <p class='text-lg font-semibold'>
-                                    Email: <?php echo isset($userData['email']) ? $userData['email'] : ''; ?>
-                                </p>
-                            </div>
-                            <hr class='my-4'>
-                            <form method="post" enctype="multipart/form-data">
-                                <div class='mb-3'>
-                                    <label for='resume'>Upload Resume:</label>
-                                    <input class='form-control' type='file' name='resume' id='resume' accept="application/pdf">
+                                    <table class='table'>
+                                        <tbody>
+                                            <tr>
+                                                <th>Name:</th>
+                                                <td><?php echo $fet_stud['name']; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>D no:</th>
+                                                <td><?php echo $fet_stud['dno']; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Department:</th>
+                                                <td><?php echo isset($userData['major']) ? $userData['major'] : ''; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Mobile Number:</th>
+                                                <td><?php echo isset($userData['phone']) ? $userData['phone'] : ''; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Email:</th>
+                                                <td><?php echo isset($userData['email']) ? $userData['email'] : ''; ?></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <form method="post" enctype="multipart/form-data">
+                                        <div class='mb-3'>
+                                            <label for='resume'>Upload Resume:</label> <br>
+                                            <input class='form-control' type='file' name='resume' id='resume' accept="application/pdf">
+                                        </div>
+                                        <button class='btn btn-primary' type="submit" name="submit">Submit</button>
+                                    </form>
                                 </div>
-                                <button class='btn btn-primary' type="submit" name="submit">Submit</button>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-
+            </main>
 
         </div>
-    </div>
-    </div>
-    </div>
-    </main>
-    </div>
     </div>
 </body>
 <?php echo $fetch_stud['degree'];

@@ -15,8 +15,44 @@ $select1 = "SELECT * FROM admin WHERE id='$id1'";
 $reg1 = mysqli_query($con, $select1);
 $fetch12 = mysqli_fetch_array($reg1);
 
-?>
+if (isset($_POST['add'])) {
+  $name = $_POST['name'];
+  $title = $_POST['title'];
+  $qualification = $_POST['qualification'];
+  $location = $_POST['location'];
+  $contact = $_POST['contact'];
+  $details = $_POST['details'];
+  $vacancy = $_POST['vacancy'];
+  $lastdate = $_POST['lastdate'];
 
+  // Handle logo upload
+  if (isset($_FILES['logo']) && $_FILES['logo']['error'] === UPLOAD_ERR_OK) {
+    $fileTmpPath = $_FILES['logo']['tmp_name'];
+    $fileName = $_FILES['logo']['name'];
+    $fileSize = $_FILES['logo']['size'];
+    $fileType = $_FILES['logo']['type'];
+
+    $uploadDir = 'clogo/'; // Directory to save uploaded logos
+    $uploadPath = $uploadDir . $fileName;
+
+    // Move the uploaded file to the desired directory
+    if (move_uploaded_file($fileTmpPath, $uploadPath)) {
+      // Logo uploaded successfully, now insert data into the database
+      $s = "INSERT INTO newplacement(name,title, qualification,location,contact, details, vacancy,lastdate, logo) VALUES ('$name','$title','$qualification','$location','$contact','$details','$vacancy','$lastdate', '$uploadPath')";
+
+      if (mysqli_query($con, $s)) {
+        echo "<script>alert('Successfully Added'); window.location='../companydetails.php';</script>";
+      } else {
+        echo "<script>alert('Not added ');window.location='../newplacement.php';</script>";
+      }
+    } else {
+      echo "<script>alert('Error uploading logo');</script>";
+    }
+  } else {
+    echo "<script>alert('No logo uploaded');</script>";
+  }
+}
+?>
 
 
 <!DOCTYPE html>
@@ -251,41 +287,83 @@ $fetch12 = mysqli_fetch_array($reg1);
         </div>
       </header>
       <main class="h-full overflow-y-auto">
-        <div class="container px-6 mx-auto grid" style="width:70%">
-          <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-            Add Placement
-          </h2>
-          <form action="./php/newplacement.php" method=post>
-            <label for="" class="text-gray-700 dark:text-gray-200">Job Title:</label>
-            <input type="text" class="form-control" name="title" placeholder="Enter your Job title">
-            <br>
-            <label for="" class="text-gray-700 dark:text-gray-200">Company Name:</label>
-            <input type="text" class="form-control" name="name" placeholder="Enter your Name" required>
-            <br>
-            <label for="" class="text-gray-700 dark:text-gray-200">Job Qualification:</label>
-            <input type="text" class="form-control" name="qualification" placeholder="Enter your Job Qualification" required>
-            <br>
-            <label for="" class="text-gray-700 dark:text-gray-200">Location:</label>
-            <input type="text" class="form-control" name="location" placeholder="Enter your location">
-            <br>
-            <label for="exampleFormControlTextarea1" class="form-label">Description:</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" name="details" placeholder="Enter Company Description"></textarea>
-            <label for="" class="text-gray-700 dark:text-gray-200">Contact No:</label>
-            <input type="number" class="form-control" name="contact" placeholder="Enter your contact" maxlength="10" required>
-            <br>
-            <label for="" class="text-gray-700 dark:text-gray-200">Vacancy:</label>
-            <input type="number" class="form-control" name="vacancy" placeholder="Enter the no of Vacancy">
-            <br>
-            <label for="" class="text-gray-700 dark:text-gray-200">Last Date:</label>
-            <input type="date" id="dateInput" class="form-control" name="lastdate" required>
-            <br>
-            <button type="submit" name="submit" class="btn btn-primary">Add</button>
-          </form>
+        <div class="container mx-auto p-6">
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <div>
+              <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200 text-center">
+                Add Company
+              </h2>
+              <form action="" method="post">
+                <table class="table-auto w-full">
+                  <tr>
+                    <td class="text-gray-700 dark:text-gray-200 block mb-2 p-2">Company Logo:</td>
+                    <td>
+                      <input type='file' name='logo' id='logo' accept=".jpg, .jpeg, .png">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-gray-700 dark:text-gray-200 block mb-2 p-2">Job Title:</td>
+                    <td>
+                      <input type="text" class="form-control" name="title" id="title" placeholder="Enter your Job title">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-gray-700 dark:text-gray-200 block mb-2 p-2">Company Name:</td>
+                    <td>
+                      <input type="text" class="form-control" name="name" id="name" placeholder="Enter your Name" required>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-gray-700 dark:text-gray-200 block mb-2 p-2">Job Qualification:</td>
+                    <td>
+                      <input type="text" class="form-control" name="qualification" id="qualification" placeholder="Enter your Job Qualification" required>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-gray-700 dark:text-gray-200 block mb-2 p-2">Location:</td>
+                    <td>
+                      <input type="text" class="form-control" name="location" id="location" placeholder="Enter your location">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-gray-700 dark:text-gray-200 block mb-2 p-2">Description:</td>
+                    <td>
+                      <textarea class="form-control" id="details" name="details" placeholder="Enter Company Description"></textarea>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-gray-700 dark:text-gray-200 block mb-2 p-2">Contact No:</td>
+                    <td>
+                      <input type="number" class="form-control" name="contact" id="contact" placeholder="Enter your contact" maxlength="10" required>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-gray-700 dark:text-gray-200 block mb-2 p-2">Vacancy:</td>
+                    <td>
+                      <input type="number" class="form-control" name="vacancy" id="vacancy" placeholder="Enter the no of Vacancy">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-gray-700 dark:text-gray-200 block mb-2 p-2">Last Date:</td>
+                    <td>
+                      <input type="date" class="form-control" name="lastdate" id="lastdate" required>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="text-gray-700 dark:text-gray-200 block mb-2 p-2"></td>
+                    <td>
+                      <button type="submit" name="add" id="add" class="btn btn-primary">Submit</button>
+                    </td>
+                  </tr>
+                </table>
+              </form>
+            </div>
+          </div>
         </div>
+      </main>
+
+
     </div>
-  </div>
-  </main>
-  </div>
   </div>
 </body>
 

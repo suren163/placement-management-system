@@ -11,15 +11,16 @@ if (isset($_GET['log']) && $_GET['log'] === 'yes') {
   header("location:login.php");
 } elseif (isset($_GET['log']) && $_GET['log'] === 'no') {
 }
-if (isset($_GET['id'])) {
-  $id = $_GET['id'];
-  $delete = mysqli_query($con, "DELETE FROM `studentdetail` WHERE id= '$id'");
-  if ($delete) {
-    echo "<script>alert('Removed')</script>";
-  } else {
-    echo "<script>alert('Failed to Removed')</script>";
-  }
-}
+// if (isset($_GET['id'])) {
+//   $id = $_GET['id'];
+//   $delete = mysqli_query($con, "DELETE FROM `studentdetail` WHERE id= '$id'");
+//   $delete_com = mysqli_query($con, "DELETE FROM `pdf` WHERE s_id='$id'");
+//   if ($delete && $delete_com) {
+//     echo "<script>alert('Successfully Removed');window.location='studentprofile.php';</script>";
+//   } else {
+//     echo "<script>alert('Failed to Removed')</script>";
+//   }
+// }
 
 $id = $_SESSION['id'];
 $select = "SELECT * FROM users WHERE id='$id'";
@@ -279,6 +280,7 @@ $fetch12 = mysqli_fetch_array($reg1);
           </h2>
           <div>
             <a href="studentpdf.php"><button type="submit" name="submit" class="btn btn-outline-primary">Print</button></a>
+            <br><br>
             <div class="w-full overflow-hidden rounded-lg shadow-xs">
               <div class="w-full overflow-x-auto">
                 <div class="table-responsive">
@@ -302,7 +304,7 @@ $fetch12 = mysqli_fetch_array($reg1);
                       <?php
                       // $select = mysqli_query($con,"SELECT * FROM addplacement");
                       // while($row=mysqli_fetch_array($select))
-                      $course = mysqli_query($con, "SELECT * FROM studentdetail ORDER BY dno");
+                      $course = mysqli_query($con, "SELECT * FROM studentdetail");
                       $i = 1;
                       while ($row = mysqli_fetch_array($course)) {
                       ?>
@@ -334,7 +336,7 @@ $fetch12 = mysqli_fetch_array($reg1);
                           <td style="text-align: center;">
                             <?php echo $row['12th']; ?>
                           </td>
-                          <td style="text-align: center;"><a href="studentprofile.php?id=<?php echo $row['id']; ?>"><button type="submit" name="submit" class="btn btn-danger">Delete</button></a></td>
+                          <td style="text-align: center;"><a href="studentview.php?id=<?php echo $row['id']; ?>"><button type="submit" name="view" class="btn btn-primary">View</button></a></td>
                         </tr>
 
                       <?php

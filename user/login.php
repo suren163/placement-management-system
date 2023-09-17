@@ -97,7 +97,7 @@
               </div>
             </div>
             <button type="submit" name="submit" class="btn btn-primary">Login</button>
-            <div class="error-message" id="error-message"></div>
+            <div class="error-message" id="error-message"> <a href="forgetpassword.php">Forget Password?</a></div>
             <div class="register-link">Not registered? <a href="register.php">Register Now..</a></div>
             <div class="register-link"><a href="../home.php"><--Back To Home..</a></div>
 

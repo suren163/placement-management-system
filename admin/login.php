@@ -62,7 +62,6 @@
 </head>
 
 <body>
-
   <div class="login-box">
     <h2 class="text-center">Admin Login</h2>
     <hr>
@@ -90,7 +89,6 @@
       <div class="back-to-home mt-3"><a href="../home.php">Back to Home</a></div>
     </form>
   </div>
-
 </body>
 
 </html>

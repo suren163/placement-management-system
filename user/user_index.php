@@ -24,5 +24,3 @@ if(isset($_POST['submit']))
 	echo "<script>window.location='login.php'</script>";
     }
 }
-?> 
-

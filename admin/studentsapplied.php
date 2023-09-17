@@ -137,12 +137,13 @@ $com_id = $_GET['idd'];
                         $com_id = $_GET['idd'];
                         $company = mysqli_query($con, "SELECT * FROM newplacement WHERE id=$com_id");
                         $row = mysqli_fetch_array($company);
-                        $count = mysqli_query($con, "SELECT * FROM pdf WHERE c_id=$com_id");
-                        $stud = mysqli_fetch_array($count);
+                        $count_query = mysqli_query($con, "SELECT count(*) as count FROM pdf WHERE c_id=$com_id");
+                        $count = mysqli_fetch_array($count_query);
+                        $student_count = $count['count'];
                         ?>
                         Company Name: <?php echo $row['name']; ?>
                         <br><br>
-                        Students Applied:<?php echo mysqli_num_rows($count); ?>
+                        Students Applied:<?php echo $student_count; ?>
 
                     </h2>
                     <div class="d-flex justify-content-between mb-3">
@@ -152,55 +153,64 @@ $com_id = $_GET['idd'];
                     <div class="w-full overflow-hidden rounded-lg shadow-xs">
                         <div class="w-full overflow-x-auto">
                             <div class="table-responsive">
-                            <table class="table table-striped">
-    <thead class="table-light">
-        <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-            <th class="px-4 py-3" style="text-align: center;">S.No</th>
-            <th class="px-4 py-3" style="text-align: center;">Name</th>
-            <th class="px-4 py-3" style="text-align: center;">D no</th>
-            <th class="px-4 py-3" style="text-align: center;">Department</th>
-            <th class="px-4 py-3" style="text-align: center;">Phone number</th>
-            <th class="px-4 py-3" style="text-align: center;">Email</th>
-            <th class="px-4 py-3" style="text-align: center;">Skills</th>
-            <th class="px-4 py-3" style="text-align: center;">10th</th>
-            <th class="px-4 py-3" style="text-align: center;">12th</th>
-            <th class="px-2 py-3">Resume</th>
-        </tr>
-    </thead>
-    <tbody class="table-group-divider">
-    <?php
-    $com_id = $row['id'];
-    $checkQuery = mysqli_query($con, "SELECT * FROM pdf WHERE c_id = $com_id");
-    $i = 1;
-    while ($row1 = mysqli_fetch_assoc($checkQuery)) {
-        $rows = $row1['s_id'];
-        $resume = $row1['resume'];
-        $studentQuery = mysqli_query($con, "SELECT * FROM studentdetail WHERE id = $rows ORDER BY dno"); // Updated query with ORDER BY
-        while ($result = mysqli_fetch_assoc($studentQuery)) {
-    ?>
-            <tr style="margin-bottom: 20%;">
-                <td style="text-align: center;"><?php echo $i; ?></td>
-                <td style="text-align: center;"><?php echo $result['name']; ?></td>
-                <td style="text-align: center;"><?php echo $result['dno']; ?></td>
-                <td style="text-align: center;"><?php echo $result['major']; ?></td>
-                <td style="text-align: center;"><?php echo $result['phone']; ?></td>
-                <td style="text-align: center;"><?php echo $result['email']; ?></td>
-                <td style="text-align: center;"><?php echo $result['skill']; ?></td>
-                <td style="text-align: center;"><?php echo $result['10th']; ?></td>
-                <td style="text-align: center;"><?php echo $result['12th']; ?></td>
-                <td><a href="../user/<?php echo $resume; ?>" target="_blank"><button type="button" class="btn btn-info">View</button></a></td>
-            </tr>
-    <?php
-            $i++;
-        }
-    }
-    if ($i === 1) {
-        echo '<tr><td colspan="10">No student Applied.</td></tr>';
-    }
-    ?>
-</tbody>
+                                <table class="table table-striped">
+                                    <thead class="table-light">
+                                        <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                                            <th class="px-4 py-3" style="text-align: center;">S.No</th>
+                                            <th class="px-4 py-3" style="text-align: center;">Name</th>
+                                            <th class="px-4 py-3" style="text-align: center;">D no</th>
+                                            <th class="px-4 py-3" style="text-align: center;">Department</th>
+                                            <th class="px-4 py-3" style="text-align: center;">Contact No</th>
+                                            <th class="px-4 py-3" style="text-align: center;">Skills</th>
+                                            <th class="px-4 py-3" style="text-align: center;">10th</th>
+                                            <th class="px-4 py-3" style="text-align: center;">12th</th>
+                                            <th class="px-2 py-3">Resume</th>
+                                            <th class="px-2 py-3">Profile View</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table-group-divider">
+                                        <?php
+                                        $com_id = $row['id'];
+                                        $checkQuery = mysqli_query($con, "SELECT * FROM pdf WHERE c_id = $com_id");
+                                        $i = 1;
+                                        while ($row1 = mysqli_fetch_assoc($checkQuery)) {
+                                            $rows = $row1['s_id'];
+                                            $resume = $row1['resume'];
+                                            $studentQuery = mysqli_query($con, "SELECT * FROM studentdetail WHERE id = $rows ORDER BY dno"); // Updated query with ORDER BY
+                                            while ($result = mysqli_fetch_assoc($studentQuery)) {
+                                        ?>
 
-</table>
+                                                <tr style="margin-bottom: 20%;">
+
+                                                    <td style="text-align: center;"><?php echo $i; ?></td>
+                                                    <td style="text-align: center;"><?php echo $result['name']; ?></td>
+                                                    <td style="text-align: center;"><?php echo $result['dno']; ?></td>
+                                                    <td style="text-align: center;"><?php echo $result['major']; ?></td>
+                                                    <td style="text-align: center;"><?php echo $result['phone']; ?></td>
+                                                    <td style="text-align: center;"><?php echo $result['skill']; ?></td>
+                                                    <td style="text-align: center;"><?php echo $result['10th']; ?></td>
+                                                    <td style="text-align: center;"><?php echo $result['12th']; ?></td>
+                                                    <td style="text-align: center;">
+                                                        <a href="../user/<?php echo $resume; ?>" target="_blank">
+                                                            <button type="button" class="btn btn-primary">View</button>
+                                                        </a>
+                                                    </td>
+                                                    <td style="text-align: center;"><a href="studentview.php?id=<?php echo $result['id']; ?>">
+                                                            <button type="button" class="btn btn-info">Review</button>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                        <?php
+                                                $i++;
+                                            }
+                                        }
+                                        if ($i === 1) {
+                                            echo '<tr><td colspan="10">No student Applied.</td></tr>';
+                                        }
+                                        ?>
+                                    </tbody>
+
+                                </table>
 
 
                             </div>

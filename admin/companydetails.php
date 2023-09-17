@@ -14,18 +14,18 @@ if (isset($_GET['log']) && $_GET['log'] === 'yes') {
   header("location:login.php");
 } elseif (isset($_GET['log']) && $_GET['log'] === 'no') {
 }
+// if (isset($_POST['delete'])) {
+//   $c_id = $_POST['id'];
+//   $delete = mysqli_query($con, "DELETE FROM `newplacement` WHERE id= '$c_id'");
+//   $delete_com = mysqli_query($con, "DELETE FROM `pdf` WHERE c_id = '$c_id'");
+//   if ($delete && $delete_com) {
+//     echo  "<script>alert('Successfully deleted');window.location='companydetails.php';</script>";
+//   } else {
+//     echo "<script>alert('Failed to delete')</script>";
+//   }
+// }
 
-if (isset($_GET['id'])) {
-  $id = $_GET['id'];
-  $delete = mysqli_query($con, "DELETE FROM `newplacement` WHERE id= '$id'");
-  if ($delete) {
-    $id = $_GET['id'];
-    $delete = mysqli_query($con, "DELETE FROM `pdf` WHERE c_id= '$id'");                 
-    echo "<script>alert('Deleted')</script>";
-  } else {
-    echo "<script>alert('Failed to deleted')</script>";
-  }
-}
+
 
 $id1 = $_SESSION['id'];
 
@@ -270,7 +270,7 @@ $fetch12 = mysqli_fetch_array($reg1);
       <main class="h-full overflow-y-auto">
         <div class="container px-6 mx-auto grid">
           <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200" style="align-items: center">
-            Company Details 
+            Company Details
           </h2>
           <div>
             <div class="w-full overflow-hidden rounded-lg shadow-xs">
@@ -296,6 +296,7 @@ $fetch12 = mysqli_fetch_array($reg1);
                       $i = 1;
                       while ($row = mysqli_fetch_array($course)) {
                       ?>
+
                         <tr style="margin-bottom: 30px;">
                           <td style="text-align: center;"><?php echo $i; ?></td>
                           <td style="text-align: center;"><?php echo $row['name']; ?></td>
@@ -305,9 +306,16 @@ $fetch12 = mysqli_fetch_array($reg1);
                           <td style="text-align: center;"><?php echo $row['contact']; ?></td>
                           <td style="text-align: center;"><?php echo $row['lastdate']; ?></td>
                           <td style="text-align: center;"><?php echo $row['details']; ?></td>
-                          <td style="text-align: center;"><a href="comupdate.php?id=<?php echo $row['id']; ?>"><button type="submit" name="submit" class="btn btn-primary">Edit</button></a></td>
-                          <td style="text-align: center;"><a href="companydetails.php?id=<?php echo $row['id']; ?>"><button type="submit" name="submit" class="btn btn-danger">Delete</button></a></td>
+                          <td style="text-align: center;"><a href="comupdate.php?id=<?php echo $row['id']; ?>"><button type="submit" name="update" id="update" class="btn btn-primary">Edit</button></a></td>
+                          <td style="text-align: center;">
+                            <form method="post" action="comdelete.php">
+                              <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                              <button type="submit" name="delete" id="delete" class="btn btn-danger" onclick="return confirm('Are you sure you want to remove <?php echo $row['name'] ?>?');">Remove</button>
+                            </form>
+                          </td>
+
                         </tr>
+
                       <?php
                         $i++;
                       }

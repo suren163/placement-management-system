@@ -21,7 +21,7 @@ if ($rows == 1) {
   $_SESSION['id'] = $data['id'];
   header("location:home.php");
 } else {
-  echo "<script>alert('Invalid email and password')</script>";
+  echo "<script>alert('Invalid username and password')</script>";
   echo "<script>window.location='login.php'</script>";
 }
-?>
+?>  

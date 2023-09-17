@@ -284,32 +284,35 @@ $fetch12 = mysqli_fetch_array($reg1);
           <div class="flex flex-wrap -mx-4">
 
             <?php
-            $course = mysqli_query($con, "SELECT * FROM newplacement ORDER BY lastdate DESC");
+            $course = mysqli_query($con, "SELECT * FROM newplacement ORDER BY id DESC");
             while ($row = mysqli_fetch_array($course)) {
               $count = mysqli_query($con, "SELECT * FROM pdf where c_id=$row[id]");
               $name = $row['name'];
+              $num_rows = mysqli_num_rows($count);
+
+              if ($num_rows > 0) {
             ?>
-
-              <div class="w-full md:w-1/2 xl:w-1/4 px-4 mb-4">
-                <a href="studentsapplied.php?idd=<?php echo $row['id']; ?>" class="card-link">
-                  <div class="card">
-                    <h1 class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                      <?php echo $name; ?>
-                    </h1>
-                    <br>
-                    <div>
-                      <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                        Students Applied:
-                        <?php echo mysqli_num_rows($count); ?>
-                      </h3>
+                <div class="w-full md:w-1/2 xl:w-1/4 px-4 mb-4">
+                  <a href="studentsapplied.php?idd=<?php echo $row['id']; ?>" class="card-link">
+                    <div class="card">
+                      <h1 class="text-lg font-semibold text-gray-700 dark:text-gray-200">
+                        <?php echo $name; ?>
+                      </h1>
+                      <br>
+                      <div>
+                        <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-200">
+                          Students Applied:
+                          <?php echo $num_rows; ?>
+                        </h3>
+                      </div>
                     </div>
-                  </div>
-                </a>
-              </div>
-
+                  </a>
+                </div>
             <?php
+              }
             }
             ?>
+
           </div>
         </div>
 

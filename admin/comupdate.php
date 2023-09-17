@@ -10,7 +10,7 @@ if (isset($_GET['log']) && $_GET['log'] === 'yes') {
   header("location:login.php");
 } elseif (isset($_GET['log']) && $_GET['log'] === 'no') {
 }
-if (isset($_POST['submit'])) {
+if (isset($_POST['update'])) {
   $id = $_GET['id'];
   $name = $_POST['name'];
   $location = $_POST['location'];
@@ -275,7 +275,7 @@ $fet = mysqli_fetch_array($reg);
             <label for="" class="text-gray-700 dark:text-gray-200">Last Date:</label>
             <input type="date" id="dateInput" class="form-control" name="lastdate" value="<?php echo $fet['lastdate'] ?>">
             <br>
-            <button type="submit" name="submit" class="btn btn-primary">submit</button>
+            <button type="submit" name="update" id="update" class="btn btn-primary">submit</button>
           </form>
         </div>
     </div>

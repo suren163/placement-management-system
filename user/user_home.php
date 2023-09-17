@@ -197,7 +197,7 @@ $userData = mysqli_fetch_assoc($userResult);
               <template x-if='isProfileMenuOpen'>
                 <ul x-transition:leave='transition ease-in duration-150' x-transition:leave-start='opacity-100' x-transition:leave-end='opacity-0' @click.away='closeProfileMenu' @keydown.escape='closeProfileMenu' class='absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md dark:border-gray-700 dark:text-gray-300 dark:bg-gray-700' aria-label='submenu'>
                   <li class='flex'>
-                    <a class='inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200' href='profile.php'>
+                    <a class='inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200' href='user_home.php'>
                       <svg class='w-4 h-4 mr-3' aria-hidden='true' fill='none' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24' stroke='currentColor'>
                         <path d='M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z'>
                         </path>
@@ -221,55 +221,120 @@ $userData = mysqli_fetch_assoc($userResult);
         </div>
 
       </header>
-      <main class="h-full overflow-y-auto">
-        <div class="container px-6 mx-auto">
-          <div class="row justify-content-center">
-            <div class="col-md-8">
-              <?php
-              $idd = $_SESSION['id'];
-              $selectUserQuery = "SELECT * FROM studentdetail WHERE id='$idd'";
-              $userResult = mysqli_query($con, $selectUserQuery);
-              if (mysqli_num_rows($userResult) > 0) {
-                $userData = mysqli_fetch_assoc($userResult);
-              ?>
-                <br>
-                <div class="card bg-light shadow">
+      <?php
+      $idd = $_SESSION['id'];
+      $selectUserQuery = "SELECT * FROM studentdetail WHERE id='$idd'";
+      $userResult = mysqli_query($con, $selectUserQuery);
+      if (mysqli_num_rows($userResult) > 0) {
+        $userData = mysqli_fetch_assoc($userResult);
+      ?>
+        <main class="h-full overflow-y-auto">
+          <div class="container custom-container px-9 mx-auto my-4">
+            <div class="row">
+              <!-- Left Column -->
+              <div class="col-md-6">
+                <div class="card">
                   <div class="card-body">
-                    <h2 class="card-title custom-card-title">Personal Information</h2>
-                    <ul class="list-unstyled personal-info-list">
-                      <li class="d-flex align-item-center"><strong>Name:</strong> <?php echo $userData['name']; ?></li>
-                      <li class="d-flex align-item-center"><strong>D No:</strong> <?php echo $userData['dno']; ?></li>
-                      <li class="d-flex align-item-center"><strong>Major:</strong> <?php echo $userData['major']; ?></li>
-                      <li class="d-flex align-item-center"><strong>Degree:</strong> <?php echo $userData['degree']; ?></li>
-                      <li class="d-flex align-item-center"><strong>Year:</strong> <?php echo $userData['year']; ?></li>
-                      <li class="d-flex align-item-center"><strong>Email:</strong> <?php echo $userData['email']; ?></li>
-                      <li class="d-flex align-item-center"><strong>Mobile Number:</strong> <?php echo $userData['phone']; ?></li>
-                      <li class="d-flex align-item-center"><strong>Skills:</strong> <?php echo $userData['skill']; ?></li>
-                    </ul>
+                    <h2 class="card-title text-primary mb-4 text-center font-semibold">Student Information</h2>
+                    <div class="table-responsive">
+                      <table class="table table-bordered table-lg mx-auto">
+                        <tr>
+                          <th>Profile Picture</th>
+                          <td><?php
+                              $profile_photo = $userData['profile_photo'];
+                              echo "<img src='../user/$profile_photo' alt='Profile Photo' class='rounded' style='max-width: 100px; border: 2px solid #ccc;' />"; // Added 'rounded' class for rounded borders
+                              ?></td>
+                        </tr>
+                        <tr>
+                          <th>Name</th>
+                          <td><?php echo $userData['name']; ?></td>
+                        </tr>
+                        <tr>
+                          <th>D No</th>
+                          <td><?php echo $userData['dno']; ?></td>
+                        </tr>
+                        <tr>
+                          <th>Major</th>
+                          <td><?php echo $userData['major']; ?></td>
+                        </tr>
+                        <tr>
+                          <th>Degree</th>
+                          <td><?php echo $userData['degree']; ?></td>
+                        </tr>
+                        <tr>
+                          <th>Year</th>
+                          <td><?php echo $userData['year']; ?></td>
+                        </tr>
+                        <tr>
+                          <th>Email</th>
+                          <td><?php echo $userData['email']; ?></td>
+                        </tr>
+                        <tr>
+                          <th>Mobile Number</th>
+                          <td><?php echo $userData['phone']; ?></td>
+                        </tr>
+                        <tr>
+                          <th>Skills</th>
+                          <td><?php echo $userData['skill']; ?></td>
+                        </tr>
+                      </table>
+                    </div>
                   </div>
                 </div>
-                <div class="card bg-light shadow mt-4">
+              </div>
+              <div class="col-md-6">
+                <div class="card">
                   <div class="card-body">
-                    <h2 class="card-title custom-card-title">Academic Marks</h2>
-                    <ul class="list-unstyled academic-marks-list">
-                      <li class="d-flex justify-content-space-between"><strong>SSLC:</strong> <?php echo $userData['10th']; ?></li>
-                      <li class="d-flex justify-content-space-between"><strong>HSC:</strong> <?php echo $userData['12th']; ?></li>
-                      <li class="d-flex justify-content-space-between"><strong>1st Semester:</strong> <?php echo $userData['1st']; ?></li>
-                      <li class="d-flex justify-content-space-between"><strong>2nd Semester:</strong> <?php echo $userData['2nd']; ?></li>
-                      <li class="d-flex justify-content-space-between"><strong>3rd Semester:</strong> <?php echo $userData['3rd']; ?></li>
-                      <li class="d-flex justify-content-space-between"><strong>4th Semester:</strong> <?php echo $userData['4th']; ?></li>
-                      <li class="d-flex justify-content-space-between"><strong>5th Semester:</strong> <?php echo $userData['5th']; ?></li>
-                      <li class="d-flex justify-content-s pace-between"><strong>6th Semester:</strong> <?php echo $userData['6th']; ?></li>
-                    </ul>
+                    <div class="table-responsive">
+                      <h2 class="card-title text-primary mb-4 text-center font-semibold">Academics Information</h2>
+                      <table class="table table-bordered table-lg mx-auto">
+                        <tr>
+                          <th>Studies</th>
+                          <th>Percentage</th>
+                        </tr>
+                        <tr>
+                          <td>SSLC</td>
+                          <td><?php echo $userData['10th']; ?></td>
+                        </tr>
+                        <tr>
+                          <td>HSC</td>
+                          <td><?php echo $userData['12th']; ?></td>
+                        </tr>
+                        <tr>
+                          <td>1st Semester</td>
+                          <td><?php echo $userData['1st']; ?></td>
+                        </tr>
+                        <tr>
+                          <td>2nd Semester</td>
+                          <td><?php echo $userData['2nd']; ?></td>
+                        </tr>
+                        <tr>
+                          <td>3rd Semester</td>
+                          <td><?php echo $userData['3rd']; ?></td>
+                        </tr>
+                        <tr>
+                          <td>4th Semester</td>
+                          <td><?php echo $userData['4th']; ?></td>
+                        </tr>
+                        <tr>
+                          <td>5th Semester</td>
+                          <td><?php echo $userData['5th']; ?></td>
+                        </tr>
+                        <tr>
+                          <td rowspan="2">6th Semester</td>
+                          <td><?php echo $userData['6th']; ?></td>
+                        </tr>
+                        <tr>
+                          <td><a href="profile.php" class="btn btn-primary">Edit </a></td>
+                        </tr>
+                      </table>
+                    </div>
                   </div>
-                  <div class="text-center mt-4">
-                  </div>
-
-                  <a href="profile.php" class="btn btn-primary">Edit</a>
                 </div>
+              </div>
             </div>
           <?php
-              } else {
+        } else {
           ?>
             <br><br><br>
             <div class="card bg-light shadow">
@@ -294,12 +359,12 @@ $userData = mysqli_fetch_assoc($userResult);
               <a href="profile.php" class="btn btn-primary">Add Details</a>
             </div>
           <?php
-              }
+        }
           ?>
 
 
           </div>
-      </main>
+        </main>
 
     </div>
   </div>

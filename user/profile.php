@@ -231,80 +231,134 @@ if (isset($_POST['submit'])) {
                 </div>
             </header>
             <main class="h-full overflow-y-auto">
-                <div class="container px-6 mx-auto grid" style="width:50%">
-                    <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-                        Profile Details
+                <div class="container px-6 mx-auto">
+                    <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200 text-center">
+                        Personal and Academic Information
                     </h2>
-                    <form action="" method=post enctype="multipart/form-data">
-                        <label for="" class="text-gray-700 dark:text-gray-200">Name:</label>
-                        <input type="text" class="form-control" name="name" value="<?php echo $fetch['name']; ?>" disabled>
-                        <br>
-                        <label for="" class="text-gray-700 dark:text-gray-200">D no:</label>
-                        <input type="text" class="form-control" name="dno" value="<?php echo $fetch['dno']; ?>" disabled>
-                        <br>
-                        <label for="" class="text-gray-700 dark:text-gray-200">Major Subject:</label>
-                        <input type="text" class="form-control" name="major" value="<?php echo isset($userData['major']) ? $userData['major'] : ''; ?>">
-                        <br>
-                        <label for="" class="text-gray-700 dark:text-gray-200">Phone number:</label>
-                        <input type="number" class="form-control" name="phone" placeholder="Enter your Phone number" value="<?php echo isset($userData['phone']) ? $userData['phone'] : ''; ?>" maxlength="10">
-                        <br>
-                        <label for="" class="text-gray-700 dark:text-gray-200">Email number:</label>
-                        <input type="email" class="form-control" name="email" placeholder="Enter your Email number" value="<?php echo isset($userData['email']) ? $userData['email'] : ''; ?>">
-                        <br>
-                        <label for="" class="text-gray-700 dark:text-gray-200">Degree:</label>
-                        <select class="form-select form-select-sm" aria-label="large select example" name="degree">
-                            <option value="">Select Degree</option>
-                            <option value="UG" <?php echo isset($userData['degree']) && $userData['degree'] === 'UG' ? 'selected' : ''; ?>>UG</option>
-                            <option value="PG" <?php echo isset($userData['degree']) && $userData['degree'] === 'PG' ? 'selected' : ''; ?>>PG</option>
-                        </select>
-                        <br>
-                        <label for="" class="text-gray-700 dark:text-gray-200">Year:</label>
-                        <select class="form-select form-select-sm" aria-label="small select example" name="year">
-                            <option value="">Select Year</option>
-                            <option value="1st year" <?php echo isset($userData['year']) && $userData['year'] === '1st year' ? 'selected' : ''; ?>>1st</option>
-                            <option value="2nd year" <?php echo isset($userData['year']) && $userData['year'] === '2nd year' ? 'selected' : ''; ?>>2nd</option>
-                            <option value="3rd year" <?php echo isset($userData['year']) && $userData['year'] === '3rd year' ? 'selected' : ''; ?>>3rd</option>
-                        </select>
 
-                        <br>
-                        <label for="exampleFormControlTextarea1" class="form-label">Skills:</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" name="skill" rows="3" placeholder="Enter your Skills"><?php echo isset($userData['skill']) ? $userData['skill'] : ''; ?></textarea>
-                        <br>
-                        <label for="" class="text-gray-700 dark:text-gray-200">10th:</label>
-                        <input type="number" class="form-control" name="10th" placeholder="Enter your 10th percentage" value="<?php echo isset($userData['10th']) ? $userData['10th'] : ''; ?>" max="100">
-                        <br>
-                        <label for="" class="text-gray-700 dark:text-gray-200">12th:</label>
-                        <input type="number" class="form-control" name="12th" placeholder="Enter your 12th percentage" value="<?php echo isset($userData['12th']) ? $userData['12th'] : ''; ?>" max="100">
-                        <br>
-                        <label for="" class="text-gray-700 dark:text-gray-200">1st semester:</label>
-                        <input type="number" class="form-control" name="1st" placeholder="Enter your 1st semester in percentage" value="<?php echo isset($userData['1st']) ? $userData['1st'] : ''; ?>" max="100">
-                        <br>
-                        <label for="" class="text-gray-700 dark:text-gray-200">2nd semester:</label>
-                        <input type="number" class="form-control" name="2nd" placeholder="Enter your 2nd semester in percentage" value="<?php echo isset($userData['2nd']) ? $userData['2nd'] : ''; ?>" max="100">
-                        <br>
-                        <label for="" class="text-gray-700 dark:text-gray-200">3rd semester:</label>
-                        <input type="number" class="form-control" name="3rd" placeholder="Enter your 3rd semester in percentage" value="<?php echo isset($userData['3rd']) ? $userData['3rd'] : ''; ?>" max="100">
-                        <br>
-                        <label for="" class="text-gray-700 dark:text-gray-200">4th semester:</label>
-                        <input type="number" class="form-control" name="4th" placeholder="Enter your 4th semester in percentage" value="<?php echo isset($userData['4th']) ? $userData['4th'] : ''; ?>" max="100">
-                        <br>
-                        <label for="" class="text-gray-700 dark:text-gray-200">5th semester:</label>
-                        <input type="number" class="form-control" name="5th" placeholder="Enter your 5th semester in percentage" value="<?php echo isset($userData['5th']) ? $userData['5th'] : ''; ?>" max="100">
-                        <br>
-                        <label for="" class="text-gray-700 dark:text-gray-200">6th semester:</label>
-                        <input type="number" class="form-control" name="6th" placeholder="Enter your 6th semester in percentage" value="<?php echo isset($userData['6th']) ? $userData['6th'] : ''; ?>" max="100">
-                        <br><br>
-                        <label for='profile'>Upload Profile photo:</label>
-                        <input type='file' name='profile_photo' id='profile' accept=".jpg, .jpeg, .png">
+                    <form action="" method="post" enctype="multipart/form-data">
+                        <table class="table">
+                            <tr>
+                                <td>Name:</td>
+                                <td>
+                                    <input type="text" class="form-control" name="name" value="<?php echo $fetch['name']; ?>" disabled>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>D no:</td>
+                                <td>
+                                    <input type="text" class="form-control" name="dno" value="<?php echo $fetch['dno']; ?>" disabled>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Major Subject:</td>
+                                <td>
+                                    <input type="text" class="form-control" name="major" value="<?php echo isset($userData['major']) ? $userData['major'] : ''; ?>">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Phone Number:</td>
+                                <td>
+                                    <input type="number" class="form-control" name="phone" placeholder="Enter your Phone number" value="<?php echo isset($userData['phone']) ? $userData['phone'] : ''; ?>" maxlength="10">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Email:</td>
+                                <td>
+                                    <input type="email" class="form-control" name="email" placeholder="Enter your Email number" value="<?php echo isset($userData['email']) ? $userData['email'] : ''; ?>">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Degree:</td>
+                                <td>
+                                    <select class="form-select form-select-sm" aria-label="large select example" name="degree">
+                                        <option value="">Select Degree</option>
+                                        <option value="UG" <?php echo isset($userData['degree']) && $userData['degree'] === 'UG' ? 'selected' : ''; ?>>UG</option>
+                                        <option value="PG" <?php echo isset($userData['degree']) && $userData['degree'] === 'PG' ? 'selected' : ''; ?>>PG</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Year:</td>
+                                <td>
+                                    <select class="form-select form-select-sm" aria-label="small select example" name="year">
+                                        <option value="">Select Year</option>
+                                        <option value="1st year" <?php echo isset($userData['year']) && $userData['year'] === '1st year' ? 'selected' : ''; ?>>1st</option>
+                                        <option value="2nd year" <?php echo isset($userData['year']) && $userData['year'] === '2nd year' ? 'selected' : ''; ?>>2nd</option>
+                                        <option value="3rd year" <?php echo isset($userData['year']) && $userData['year'] === '3rd year' ? 'selected' : ''; ?>>3rd</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Skills:</td>
+                                <td>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" name="skill" rows="3" placeholder="Enter your Skills"><?php echo isset($userData['skill']) ? $userData['skill'] : ''; ?></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10th:</td>
+                                <td>
+                                    <input type="number" class="form-control" name="10th" placeholder="Enter your 10th percentage" value="<?php echo isset($userData['10th']) ? $userData['10th'] : ''; ?>" max="100">
+                                </td>
+                            </tr>
 
-                        <br><br>
+                            <tr>
+                                <td>12th:</td>
+                                <td>
+                                    <input type="number" class="form-control" name="12th" placeholder="Enter your 12th percentage" value="<?php echo isset($userData['12th']) ? $userData['12th'] : ''; ?>" max="100">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1st semester:</td>
+                                <td>
+                                    <input type="number" class="form-control" name="1st" placeholder="Enter your 1st semester in percentage" value="<?php echo isset($userData['1st']) ? $userData['1st'] : ''; ?>" max="100">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2nd semester:</td>
+                                <td>
+                                    <input type="number" class="form-control" name="2nd" placeholder="Enter your 2nd semester in percentage" value="<?php echo isset($userData['2nd']) ? $userData['2nd'] : ''; ?>" max="100">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3rd semester:</td>
+                                <td>
+                                    <input type="number" class="form-control" name="3rd" placeholder="Enter your 3rd semester in percentage" value="<?php echo isset($userData['3rd']) ? $userData['3rd'] : ''; ?>" max="100">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4th semester:</td>
+                                <td>
+                                    <input type="number" class="form-control" name="4th" placeholder="Enter your 4th semester in percentage" value="<?php echo isset($userData['4th']) ? $userData['4th'] : ''; ?>" max="100">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5th semester:</td>
+                                <td>
+                                    <input type="number" class="form-control" name="5th" placeholder="Enter your 5th semester in percentage" value="<?php echo isset($userData['5th']) ? $userData['5th'] : ''; ?>" max="100">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>6th semester:</td>
+                                <td>
+                                    <input type="number" class="form-control" name="6th" placeholder="Enter your 6th semester in percentage" value="<?php echo isset($userData['6th']) ? $userData['6th'] : ''; ?>" max="100">
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>Update Profile photo:</td>
+                                <td>
+                                    <input type='file' name='profile_photo' id='profile' accept=".jpg, .jpeg, .png">
+                                </td>
+                            </tr>
+                        </table>
                         <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
+            </main>
+
         </div>
-    </div>
-    </main>
-    </div>
     </div>
 </body>
 
