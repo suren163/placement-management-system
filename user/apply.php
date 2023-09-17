@@ -50,13 +50,12 @@ if (isset($_POST['submit'])) {
         $fileTmpPath = $_FILES['resume']['tmp_name'];
         $fileType = $_FILES['resume']['type'];
 
-        if ($fileType == 'application/pdf') { // Check if the file is a PDF
-            $newFileName = $dno . '_resume.pdf'; // Rename the file
+        if ($fileType == 'application/pdf') {
+            $newFileName = $dno . '_resume.pdf';
 
-            $uploadDir = 'resume_uploads/'; // Directory to save uploaded resumes
+            $uploadDir = 'resume_uploads/';
             $uploadPath = $uploadDir . $newFileName;
 
-            // Move the uploaded file to the desired directory
             if (move_uploaded_file($fileTmpPath, $uploadPath)) {
                 // Update the profile photo path in the database
                 $updatePhotoQuery = "INSERT INTO pdf (s_id, c_id, resume) VALUES ($idd, $id, '$uploadPath')";
@@ -105,7 +104,7 @@ if (isset($_POST['submit'])) {
                 }
             }
         } else {
-            echo "<script>alert('file size must be less than 500');window.location='apply.php';</script>";
+            echo "<script>alert('Invalid file format');window.location='apply.php';</script>";
         }
     }
 }
@@ -346,13 +345,15 @@ if (isset($_POST['submit'])) {
                                     </table>
 
                                     <form method="post" enctype="multipart/form-data">
-                                        <div class='mb-3'>
-                                            <label for='resume'>Upload Resume:</label> <br>
-                                            <p>file size must be less than 500</p>
-                                            <input class='form-control' type='file' name='resume' id='resume' accept="application/pdf">
+                                        <div class="mb-3">
+                                            <label for="resume" class="form-label">Upload Resume: <p style="font-size: 14px; color: red;">File size must be less than 500KB</p></label>
+
+                                            <input type="file" class="form-control" name="resume" id="resume" accept="application/pdf">
                                         </div>
-                                        <button class='btn btn-primary' type="submit" name="submit">Submit</button>
+                                        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                                     </form>
+
+
                                 </div>
                             </div>
                         </div>
