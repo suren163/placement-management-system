@@ -66,20 +66,31 @@ if (isset($_POST['submit'])) {
         }
     }
 
+    $student_photo = $fetch['dno'];
+
     if (isset($_FILES['profile_photo']) && $_FILES['profile_photo']['error'] === UPLOAD_ERR_OK) {
         $fileTmpPath = $_FILES['profile_photo']['tmp_name'];
         $fileName = $_FILES['profile_photo']['name'];
         $fileSize = $_FILES['profile_photo']['size'];
         $fileType = $_FILES['profile_photo']['type'];
 
-        $uploadDir = 'profile_photo/'; // Directory to save uploaded photos
-        $uploadPath = $uploadDir . $fileName;
+        $allowedExtensions = ['jpg', 'png', 'jpeg'];
+        $fileExtension = pathinfo($fileName, PATHINFO_EXTENSION);
 
-        // Move the uploaded file to the desired directory
-        if (move_uploaded_file($fileTmpPath, $uploadPath)) {
-            // Update the profile photo path in the database
-            $updatePhotoQuery = "UPDATE studentdetail SET profile_photo='$uploadPath' WHERE id='$idd'";
-            mysqli_query($con, $updatePhotoQuery);
+        if (in_array($fileExtension, $allowedExtensions)) {
+            $newFileName = $student_photo . '_profile.' . $fileExtension;
+
+            $uploadDir = 'profile_photo/'; // Directory to save uploaded photos
+            $uploadPath = $uploadDir . $newFileName;
+
+            // Move the uploaded file to the desired directory
+            if (move_uploaded_file($fileTmpPath, $uploadPath)) {
+                // Update the profile photo path in the database
+                $updatePhotoQuery = "UPDATE studentdetail SET profile_photo='$uploadPath' WHERE id='$idd'";
+                mysqli_query($con, $updatePhotoQuery);
+            }
+        } else {
+            echo "Invalid file format. Please upload a JPG, PNG, or JPEG.";
         }
     }
 }

@@ -44,17 +44,22 @@ $userData = mysqli_fetch_assoc($userResult);
 if (isset($_POST['submit'])) {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+        // Get the 'dno' value
+        $dno = $fet_stud['dno'];
+
         $fileTmpPath = $_FILES['resume']['tmp_name'];
-        $fileName = $_FILES['resume']['name'];
-        $fileSize = $_FILES['resume']['size'];
         $fileType = $_FILES['resume']['type'];
-        if ($fileSize / 1024 <= 500) {
-            $uploadDir = 'resume_uploads/'; // Directory to save uploaded photos
-            $uploadPath = $uploadDir . $fileName;
+
+        if ($fileType == 'application/pdf') { // Check if the file is a PDF
+            $newFileName = $dno . '_resume.pdf'; // Rename the file
+
+            $uploadDir = 'resume_uploads/'; // Directory to save uploaded resumes
+            $uploadPath = $uploadDir . $newFileName;
+
             // Move the uploaded file to the desired directory
             if (move_uploaded_file($fileTmpPath, $uploadPath)) {
                 // Update the profile photo path in the database
-                $updatePhotoQuery = "INSERT INTO pdf (s_id,c_id,resume) VALUES ($idd,$id,'$uploadPath')";
+                $updatePhotoQuery = "INSERT INTO pdf (s_id, c_id, resume) VALUES ($idd, $id, '$uploadPath')";
                 mysqli_query($con, $updatePhotoQuery);
                 $mail = new PHPMailer(true);
 
@@ -100,7 +105,7 @@ if (isset($_POST['submit'])) {
                 }
             }
         } else {
-            echo "file size must be less than 500";
+            echo "<script>alert('file size must be less than 500');window.location='apply.php';</script>";
         }
     }
 }
@@ -343,6 +348,7 @@ if (isset($_POST['submit'])) {
                                     <form method="post" enctype="multipart/form-data">
                                         <div class='mb-3'>
                                             <label for='resume'>Upload Resume:</label> <br>
+                                            <p>file size must be less than 500</p>
                                             <input class='form-control' type='file' name='resume' id='resume' accept="application/pdf">
                                         </div>
                                         <button class='btn btn-primary' type="submit" name="submit">Submit</button>
