@@ -43,9 +43,12 @@ $com_id = $_GET['idd'];
         <!-- Desktop sidebar -->
         <aside class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0">
             <div class="py-4 text-gray-500 dark:text-gray-400">
-                <a class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200">
-                    College Job Portal
-                </a>
+                <div class="py-2 text-gray-500 dark:text-gray-400 flex items-center">
+                    <a href="https://sjctni.edu/" class="mr-2">
+                        <img src="img/sjc.png" alt="College Logo" width="75" height="75" class="rounded-full" style="text-align: center;">
+                    </a>
+                    <span class="ml-3 text-lg font-bold text-gray-800 dark:text-gray-200">SJC Placement Management</span>
+                </div>
 
                 <br><br>
                 <ul>
@@ -94,11 +97,8 @@ $com_id = $_GET['idd'];
                     <div class="flex justify-center flex-1 lg:mr-32">
                         <div class="relative w-full max-w-xl mr-6 focus-within:text-purple-500">
                             <div class="absolute inset-y-0 flex items-center pl-2">
-                                <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
-                                </svg>
+
                             </div>
-                            <input class="w-full pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md dark:placeholder-gray-500 dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input" type="text" placeholder="Search for Jobs" aria-label="Search" />
                         </div>
                     </div>
                     <ul class="flex items-center flex-shrink-0 space-x-6">
@@ -141,13 +141,24 @@ $com_id = $_GET['idd'];
                         $count = mysqli_fetch_array($count_query);
                         $student_count = $count['count'];
                         ?>
-                        Company Name: <?php echo $row['name']; ?>
-                        <br><br>
-                        Students Applied:<?php echo $student_count; ?>
+                        <table class="table table-bordered table-lg mx-auto">
+                            <tbody>
+                                <tr>
+                                    <th>Company Name </th>
+                                    <td><?php echo $row['name']; ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Students Applied</th>
+                                    <td><?php echo $student_count; ?></td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+
 
                     </h2>
                     <div class="d-flex justify-content-between mb-3">
-                        <a href="appliedstudentpdf.php?idd=<?php echo $row['id']; ?>"><button type="button" class="btn btn-primary">Print Student Details</button></a>
+                        <a href="appliedstudentpdf.php?idd=<?php echo $row['id']; ?>"><button type="button" class="btn btn-primary">Print</button></a>
                         <a href="attendancepdf.php?idd=<?php echo $row['id']; ?>"><button type="button" class="btn btn-outline-primary">Attendance Sheet</button></a>
                     </div>
                     <div class="w-full overflow-hidden rounded-lg shadow-xs">
@@ -156,6 +167,7 @@ $com_id = $_GET['idd'];
                                 <table class="table table-striped">
                                     <thead class="table-light">
                                         <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                                            <th class="px-4 py-3" style="text-align: center;">Select</th>
                                             <th class="px-4 py-3" style="text-align: center;">S.No</th>
                                             <th class="px-4 py-3" style="text-align: center;">Name</th>
                                             <th class="px-4 py-3" style="text-align: center;">D no</th>
@@ -179,9 +191,8 @@ $com_id = $_GET['idd'];
                                             $studentQuery = mysqli_query($con, "SELECT * FROM studentdetail WHERE id = $rows ORDER BY dno"); // Updated query with ORDER BY
                                             while ($result = mysqli_fetch_assoc($studentQuery)) {
                                         ?>
-
                                                 <tr style="margin-bottom: 20%;">
-
+                                                    <td style="text-align: center;"><input type="checkbox" name="student_ids[]" value="<?php echo $result['id']; ?>"></td>
                                                     <td style="text-align: center;"><?php echo $i; ?></td>
                                                     <td style="text-align: center;"><?php echo $result['name']; ?></td>
                                                     <td style="text-align: center;"><?php echo $result['dno']; ?></td>
@@ -196,21 +207,27 @@ $com_id = $_GET['idd'];
                                                         </a>
                                                     </td>
                                                     <td style="text-align: center;"><a href="studentview.php?id=<?php echo $result['id']; ?>">
-                                                            <button type="button" class="btn btn-info">Review</button>
+                                                            <button type="button" class="btn btn-success">Review</button>
                                                         </a>
                                                     </td>
                                                 </tr>
+
                                         <?php
                                                 $i++;
                                             }
                                         }
+
+
                                         if ($i === 1) {
-                                            echo '<tr><td colspan="10">No student Applied.</td></tr>';
+                                            echo '<tr><td colspan="11">No student Applied.</td></tr>';
                                         }
                                         ?>
                                     </tbody>
 
                                 </table>
+                                <a href="studentview.php?id=<?php echo $result['id']; ?>">
+                                    <button type="button" id="select" name="select" class="btn btn-info">Submit</button>
+                                </a>
 
 
                             </div>

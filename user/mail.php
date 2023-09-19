@@ -55,7 +55,7 @@ if (isset($_POST['send'])) {
             $mail->Body    = $msg;
 
             $mail->send();
-            echo "<script>alert('Message has been sent');window.location='.login.php';</script>";
+            echo "<script>alert('Password send to your Mail');window.location='login.php';</script>";
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }

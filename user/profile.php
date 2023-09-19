@@ -201,11 +201,8 @@ if (isset($_POST['submit'])) {
                     <div class="flex justify-center flex-1 lg:mr-32">
                         <div class="relative w-full max-w-xl mr-6 focus-within:text-purple-500">
                             <div class="absolute inset-y-0 flex items-center pl-2">
-                                <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
-                                </svg>
+
                             </div>
-                            <input class="w-full pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md dark:placeholder-gray-500 dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input" type="text" placeholder="Search for Student" aria-label="Search" />
                         </div>
                     </div>
                     <ul class="flex items-center flex-shrink-0 space-x-6">
@@ -250,37 +247,37 @@ if (isset($_POST['submit'])) {
                     <form action="" method="post" enctype="multipart/form-data">
                         <table class="table">
                             <tr>
-                                <td>Name:</td>
+                                <td>Name</td>
                                 <td>
                                     <input type="text" class="form-control" name="name" value="<?php echo $fetch['name']; ?>" disabled>
                                 </td>
                             </tr>
                             <tr>
-                                <td>D no:</td>
+                                <td>D no</td>
                                 <td>
                                     <input type="text" class="form-control" name="dno" value="<?php echo $fetch['dno']; ?>" disabled>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Major Subject:</td>
+                                <td>Major Subject</td>
                                 <td>
                                     <input type="text" class="form-control" name="major" value="<?php echo isset($userData['major']) ? $userData['major'] : ''; ?>">
                                 </td>
                             </tr>
                             <tr>
-                                <td>Phone Number:</td>
+                                <td>Phone Number</td>
                                 <td>
                                     <input type="number" class="form-control" name="phone" placeholder="Enter your Phone number" value="<?php echo isset($userData['phone']) ? $userData['phone'] : ''; ?>" maxlength="10">
                                 </td>
                             </tr>
                             <tr>
-                                <td>Email:</td>
+                                <td>E-mail</td>
                                 <td>
                                     <input type="email" class="form-control" name="email" placeholder="Enter your Email number" value="<?php echo isset($userData['email']) ? $userData['email'] : ''; ?>">
                                 </td>
                             </tr>
                             <tr>
-                                <td>Degree:</td>
+                                <td>Degree</td>
                                 <td>
                                     <select class="form-select form-select-sm" aria-label="large select example" name="degree">
                                         <option value="">Select Degree</option>
@@ -290,7 +287,7 @@ if (isset($_POST['submit'])) {
                                 </td>
                             </tr>
                             <tr>
-                                <td>Year:</td>
+                                <td>Year</td>
                                 <td>
                                     <select class="form-select form-select-sm" aria-label="small select example" name="year">
                                         <option value="">Select Year</option>
@@ -301,56 +298,56 @@ if (isset($_POST['submit'])) {
                                 </td>
                             </tr>
                             <tr>
-                                <td>Skills:</td>
+                                <td>Skills</td>
                                 <td>
                                     <textarea class="form-control" id="exampleFormControlTextarea1" name="skill" rows="3" placeholder="Enter your Skills"><?php echo isset($userData['skill']) ? $userData['skill'] : ''; ?></textarea>
                                 </td>
                             </tr>
                             <tr>
-                                <td>10th:</td>
+                                <td>10th</td>
                                 <td>
                                     <input type="number" class="form-control" name="10th" placeholder="Enter your 10th percentage" value="<?php echo isset($userData['10th']) ? $userData['10th'] : ''; ?>" max="100">
                                 </td>
                             </tr>
 
                             <tr>
-                                <td>12th:</td>
+                                <td>12th</td>
                                 <td>
                                     <input type="number" class="form-control" name="12th" placeholder="Enter your 12th percentage" value="<?php echo isset($userData['12th']) ? $userData['12th'] : ''; ?>" max="100">
                                 </td>
                             </tr>
                             <tr>
-                                <td>1st semester:</td>
+                                <td>1st semester</td>
                                 <td>
                                     <input type="number" class="form-control" name="1st" placeholder="Enter your 1st semester in percentage" value="<?php echo isset($userData['1st']) ? $userData['1st'] : ''; ?>" max="100">
                                 </td>
                             </tr>
                             <tr>
-                                <td>2nd semester:</td>
+                                <td>2nd semester</td>
                                 <td>
                                     <input type="number" class="form-control" name="2nd" placeholder="Enter your 2nd semester in percentage" value="<?php echo isset($userData['2nd']) ? $userData['2nd'] : ''; ?>" max="100">
                                 </td>
                             </tr>
                             <tr>
-                                <td>3rd semester:</td>
+                                <td>3rd semester</td>
                                 <td>
                                     <input type="number" class="form-control" name="3rd" placeholder="Enter your 3rd semester in percentage" value="<?php echo isset($userData['3rd']) ? $userData['3rd'] : ''; ?>" max="100">
                                 </td>
                             </tr>
                             <tr>
-                                <td>4th semester:</td>
+                                <td>4th semester</td>
                                 <td>
                                     <input type="number" class="form-control" name="4th" placeholder="Enter your 4th semester in percentage" value="<?php echo isset($userData['4th']) ? $userData['4th'] : ''; ?>" max="100">
                                 </td>
                             </tr>
                             <tr>
-                                <td>5th semester:</td>
+                                <td>5th semester</td>
                                 <td>
                                     <input type="number" class="form-control" name="5th" placeholder="Enter your 5th semester in percentage" value="<?php echo isset($userData['5th']) ? $userData['5th'] : ''; ?>" max="100">
                                 </td>
                             </tr>
                             <tr>
-                                <td>6th semester:</td>
+                                <td>6th semester</td>
                                 <td>
                                     <input type="number" class="form-control" name="6th" placeholder="Enter your 6th semester in percentage" value="<?php echo isset($userData['6th']) ? $userData['6th'] : ''; ?>" max="100">
                                 </td>
@@ -358,7 +355,7 @@ if (isset($_POST['submit'])) {
 
 
                             <tr>
-                                <td>Update Profile photo:</td>
+                                <td>Update Profile photo</td>
                                 <td>
                                     <input type='file' name='profile_photo' id='profile' accept=".jpg, .jpeg, .png">
                                 </td>

@@ -2,7 +2,9 @@
 <html lang="en">
 
 <head>
-    <title>Home Builder - Free Bootstrap 4 Template by Colorlib</title>
+    <title>SJC Placement Cell
+
+    </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -25,10 +27,12 @@
 
 <body>
 
-    <div class="container pt-5">
+    <div class="container pt-4">
         <div class="row justify-content-between">
             <div class="col">
-                <a class="navbar-brand" href="https://sjctni.edu">SJC<span> Placement Mangement System</span></a>
+                <a class="navbar-brand" href="https://sjctni.edu">
+                    <img src="./admin/clogo/sjc.png" alt="College Logo" width="60" height="70" class="rounded-full" style="text-align: center;">
+                    SJC<span> Placement Mangement System</span></a>
             </div>
 
         </div>
@@ -43,11 +47,10 @@
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active"><a href="home.php" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="" class="nav-link">About</a></li>
                     <li class="nav-item"><a href="./admin/login.php" class="nav-link">Admin Login</a></li>
-                    <li class="nav-item"><a href="./user/login.php" class="nav-link">User Login</a></li>
-                    <li class="nav-item"><a href="contact.html" class="nav-link">Our Recruiter</a></li>
-                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li class="nav-item"><a href="./user/login.php" class="nav-link">Student Login</a></li>
+                    <li class="nav-item"><a href="recruit.php" class="nav-link">Our Recruiter</a></li>
+                    <li class="nav-item"><a href="contact.php" class="nav-link">Contact</a></li>
                 </ul>
             </div>
         </div>

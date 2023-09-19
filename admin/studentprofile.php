@@ -104,7 +104,7 @@ $fetch12 = mysqli_fetch_array($reg1);
                 <path d="M4.5 2a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm-6 3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm-6 3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Z" />
               </svg>
 
-              <span class="ml-4">New Placement</span>
+              <span class="ml-4">Add Company</span>
             </a>
           </li>
           <li class="relative px-6 py-3">
@@ -118,7 +118,7 @@ $fetch12 = mysqli_fetch_array($reg1);
               <span class="ml-4">Company Details</span>
             </a>
           </li>
-          <li class="relative px-6 py-3">
+          <!-- <li class="relative px-6 py-3">
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" href="profile.php">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                 <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
@@ -127,7 +127,7 @@ $fetch12 = mysqli_fetch_array($reg1);
 
               <span class="ml-4">My Profile</span>
             </a>
-          </li>
+          </li> -->
           <li class="relative px-6 py-3">
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" href="?log=yes" onclick="return confirm('Do you want to logout?')">
               <svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -182,7 +182,7 @@ $fetch12 = mysqli_fetch_array($reg1);
                 <path d="M4.5 2a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm-6 3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm-6 3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Z" />
               </svg>
 
-              <span class="ml-4">New Placement</span>
+              <span class="ml-4">Add Company</span>
             </a>
           </li>
           <li class="relative px-6 py-3">
@@ -196,7 +196,7 @@ $fetch12 = mysqli_fetch_array($reg1);
               <span class="ml-4">Company Details</span>
             </a>
           </li>
-          <li class="relative px-6 py-3">
+          <!-- <li class="relative px-6 py-3">
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" href="profile.php">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                 <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
@@ -205,7 +205,7 @@ $fetch12 = mysqli_fetch_array($reg1);
 
               <span class="ml-4">My Profile</span>
             </a>
-          </li>
+          </li> -->
           <li class="relative px-6 py-3">
             <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200" href="?log=yes" onclick="return confirm('Do you want to logout?')">
               <svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -231,11 +231,8 @@ $fetch12 = mysqli_fetch_array($reg1);
           <div class="flex justify-center flex-1 lg:mr-32">
             <div class="relative w-full max-w-xl mr-6 focus-within:text-purple-500">
               <div class="absolute inset-y-0 flex items-center pl-2">
-                <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
-                </svg>
+
               </div>
-              <input class="w-full pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md dark:placeholder-gray-500 dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input" type="text" placeholder="Search for Jobs" aria-label="Search" />
             </div>
           </div>
           <ul class="flex items-center flex-shrink-0 space-x-6">
@@ -274,77 +271,78 @@ $fetch12 = mysqli_fetch_array($reg1);
         </div>
       </header>
       <main class="h-full overflow-y-auto">
-        <div class="container px-6 mx-auto grid">
-          <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200" style="align-items: center">
+        <div class="container px-6 mx-auto grid text-center">
+          <h1 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
             Student Details
-          </h2>
-          <div>
-            <a href="studentpdf.php"><button type="submit" name="submit" class="btn btn-outline-primary">Print</button></a>
-            <br><br>
-            <div class="w-full overflow-hidden rounded-lg shadow-xs">
-              <div class="w-full overflow-x-auto">
-                <div class="table-responsive">
-                  <table class="table table-striped">
-                    <thead class="table-light>
+          </h1>
+        </div>
+        <div>
+          <a href="studentpdf.php"><button type="submit" name="submit" class="btn btn-outline-primary">Print</button></a>
+          <br><br>
+          <div class="w-full overflow-hidden rounded-lg shadow-xs">
+            <div class="w-full overflow-x-auto">
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead class="table-light>
                     <tr
                       class=" text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-                      <th class="px-4 py-3" style="text-align: center;">S.No</th>
-                      <th class="px-4 py-3" style="text-align: center;">Name</th>
-                      <th class="px-4 py-3" style="text-align: center;">D no</th>
-                      <th class="px-4 py-3" style="text-align: center;">Department</th>
-                      <th class="px-4 py-3" style="text-align: center;">Phone number</th>
-                      <th class="px-4 py-3" style="text-align: center;">Email</th>
-                      <th class="px-4 py-3" style="text-align: center;">Skills</th>
-                      <th class="px-4 py-3" style="text-align: center;">10th</th>
-                      <th class="px-4 py-3" style="text-align: center;">12th</th>
+                    <th class="px-4 py-3" style="text-align: center;">S.No</th>
+                    <th class="px-4 py-3" style="text-align: center;">Name</th>
+                    <th class="px-4 py-3" style="text-align: center;">D no</th>
+                    <th class="px-4 py-3" style="text-align: center;">Department</th>
+                    <th class="px-4 py-3" style="text-align: center;">Phone number</th>
+                    <th class="px-4 py-3" style="text-align: center;">Email</th>
+                    <th class="px-4 py-3" style="text-align: center;">Skills</th>
+                    <th class="px-4 py-3" style="text-align: center;">10th</th>
+                    <th class="px-4 py-3" style="text-align: center;">12th</th>
+                    </tr>
+                  </thead>
+
+                  <tbody class="table-group-divider">
+                    <?php
+                    // $select = mysqli_query($con,"SELECT * FROM addplacement");
+                    // while($row=mysqli_fetch_array($select))
+                    $course = mysqli_query($con, "SELECT * FROM studentdetail");
+                    $i = 1;
+                    while ($row = mysqli_fetch_array($course)) {
+                    ?>
+                      <tr style="margin-bottom: 20%;">
+                        <td style="text-align: center;">
+                          <?php echo $i; ?>
+                        </td>
+                        <td style="text-align: center;">
+                          <?php echo $row['name']; ?>
+                        </td>
+                        <td style="text-align: center;">
+                          <?php echo $row['dno']; ?>
+                        </td>
+                        <td style="text-align: center;">
+                          <?php echo $row['major']; ?>
+                        </td>
+                        <td style="text-align: center;">
+                          <?php echo $row['phone']; ?>
+                        </td>
+                        <td style="text-align: center;">
+                          <?php echo $row['email']; ?>
+                        </td>
+                        <td style="text-align: center;">
+                          <?php echo $row['skill']; ?>
+                        </td>
+                        <td style="text-align: center;">
+                          <?php echo $row['10th']; ?>
+                        </td>
+                        <td style="text-align: center;">
+                          <?php echo $row['12th']; ?>
+                        </td>
+                        <td style="text-align: center;"><a href="studentview.php?id=<?php echo $row['id']; ?>"><button type="submit" name="view" class="btn btn-primary">View</button></a></td>
                       </tr>
-                    </thead>
 
-                    <tbody class="table-group-divider">
-                      <?php
-                      // $select = mysqli_query($con,"SELECT * FROM addplacement");
-                      // while($row=mysqli_fetch_array($select))
-                      $course = mysqli_query($con, "SELECT * FROM studentdetail");
-                      $i = 1;
-                      while ($row = mysqli_fetch_array($course)) {
-                      ?>
-                        <tr style="margin-bottom: 20%;">
-                          <td style="text-align: center;">
-                            <?php echo $i; ?>
-                          </td>
-                          <td style="text-align: center;">
-                            <?php echo $row['name']; ?>
-                          </td>
-                          <td style="text-align: center;">
-                            <?php echo $row['dno']; ?>
-                          </td>
-                          <td style="text-align: center;">
-                            <?php echo $row['major']; ?>
-                          </td>
-                          <td style="text-align: center;">
-                            <?php echo $row['phone']; ?>
-                          </td>
-                          <td style="text-align: center;">
-                            <?php echo $row['email']; ?>
-                          </td>
-                          <td style="text-align: center;">
-                            <?php echo $row['skill']; ?>
-                          </td>
-                          <td style="text-align: center;">
-                            <?php echo $row['10th']; ?>
-                          </td>
-                          <td style="text-align: center;">
-                            <?php echo $row['12th']; ?>
-                          </td>
-                          <td style="text-align: center;"><a href="studentview.php?id=<?php echo $row['id']; ?>"><button type="submit" name="view" class="btn btn-primary">View</button></a></td>
-                        </tr>
+                    <?php
+                      $i++;
+                    }
 
-                      <?php
-                        $i++;
-                      }
-
-                      ?>
-                    </tbody>
-                  </table>
-                </div>
+                    ?>
+                  </tbody>
+                </table>
               </div>
+            </div>

@@ -49,7 +49,7 @@ $fet = mysqli_fetch_array($reg);
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
-  <title>Dashboard</title>
+  <title>Update Company </title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/css/tailwind.output.css" />
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
@@ -100,7 +100,7 @@ $fet = mysqli_fetch_array($reg);
                 <path d="M4.5 2a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm-6 3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm-6 3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Z" />
               </svg>
 
-              <span class="ml-4">Update Placement</span>
+              <span class="ml-4">Update Company</span>
             </a>
           </li>
           <li class="relative px-6 py-3">
@@ -165,7 +165,7 @@ $fet = mysqli_fetch_array($reg);
                 <path d="M4.5 2a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm-6 3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm-6 3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm3 0a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Z" />
               </svg>
 
-              <span class="ml-4">Update Placement</span>
+              <span class="ml-4">Update Company</span>
             </a>
           </li>
           <li class="relative px-6 py-3">
@@ -203,11 +203,8 @@ $fet = mysqli_fetch_array($reg);
           <div class="flex justify-center flex-1 lg:mr-32">
             <div class="relative w-full max-w-xl mr-6 focus-within:text-purple-500">
               <div class="absolute inset-y-0 flex items-center pl-2">
-                <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
-                </svg>
+
               </div>
-              <input class="w-full pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md dark:placeholder-gray-500 dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input" type="text" placeholder="Search for Student" aria-label="Search" />
             </div>
           </div>
           <ul class="flex items-center flex-shrink-0 space-x-6">
@@ -247,41 +244,53 @@ $fet = mysqli_fetch_array($reg);
         </div>
       </header>
       <main class="h-full overflow-y-auto">
-        <div class="container px-6 mx-auto grid" style="width:70%">
+        <div class="container px-6 mx-auto" style="width:90%"> <!-- Increased width to 80% -->
           <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-            Update Placement &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <?php echo $fet['name'] ?>
+            Update Company &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <?php echo $fet['name'] ?>
           </h2>
-          <form action="" method=post>
-            <label for="" class="text-gray-700 dark:text-gray-200">Job Title:</label>
-            <input type="text" class="form-control" name="title" placeholder="Enter your Job title" value="<?php echo $fet['title'] ?>">
-            <br>
-            <label for="" class="text-gray-700 dark:text-gray-200">Company Name:</label>
-            <input type="text" class="form-control" name="name" placeholder="Enter your Name" value="<?php echo $fet['name'] ?>">
-            <br>
-            <label for="" class="text-gray-700 dark:text-gray-200">Job Qualification:</label>
-            <input type="text" class="form-control" name="qualification" placeholder="Enter your Job Qualification" value="<?php echo $fet['qualification'] ?>">
-            <br>
-            <label for="" class="text-gray-700 dark:text-gray-200">Location:</label>
-            <input type="text" class="form-control" name="location" placeholder="Enter your location" value="<?php echo $fet['location'] ?>">
-            <br>
-            <label for="exampleFormControlTextarea1" class="form-label">Description:</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" name="details" placeholder="Enter Company Description"><?php echo $fet['details']; ?></textarea>
-            <label for="" class="text-gray-700 dark:text-gray-200">Contact No:</label>
-            <input type="number" class="form-control" name="contact" placeholder="Enter your contact" value="<?php echo $fet['contact'] ?>">
-            <br>
-            <label for="" class="text-gray-700 dark:text-gray-200">Vacancy:</label>
-            <input type="number" class="form-control" name="vacancy" placeholder="Enter the no of Vacancy" value="<?php echo $fet['vacancy'] ?>">
-            <br>
-            <label for="" class="text-gray-700 dark:text-gray-200">Last Date:</label>
-            <input type="date" id="dateInput" class="form-control" name="lastdate" value="<?php echo $fet['lastdate'] ?>">
-            <br>
-            <button type="submit" name="update" id="update" class="btn btn-primary">submit</button>
+          <form action="" method="post">
+            <table class="w-full">
+              <tr class="py-2 px-4 mb-4">
+                <td><label for="" class="text-gray-700 dark:text-gray-200">Job Title:</label></td>
+                <td><input type="text" class="form-control" name="title" placeholder="Enter your Job title" value="<?php echo $fet['title'] ?>"></td>
+              </tr>
+              <tr class="py-2 px-4 mb-4">
+                <td><label for="" class="text-gray-700 dark:text-gray-200">Company Name:</label></td>
+                <td><input type="text" class="form-control" name="name" placeholder="Enter your Name" value="<?php echo $fet['name'] ?>"></td>
+              </tr>
+              <tr class="py-2 px-4 mb-4">
+                <td><label for="" class="text-gray-700 dark:text-gray-200">Job Qualification:</label></td>
+                <td><input type="text" class="form-control" name="qualification" placeholder="Enter your Job Qualification" value="<?php echo $fet['qualification'] ?>"></td>
+              </tr>
+              <tr class="py-2 px-4 mb-4">
+                <td><label for="" class="text-gray-700 dark:text-gray-200">Location:</label></td>
+                <td><input type="text" class="form-control" name="location" placeholder="Enter your location" value="<?php echo $fet['location'] ?>"></td>
+              </tr>
+              <tr class="py-2 px-4 mb-4">
+                <td><label for="exampleFormControlTextarea1" class="form-label">Description:</label></td>
+                <td><textarea class="form-control" id="exampleFormControlTextarea1" name="details" placeholder="Enter Company Description"><?php echo $fet['details']; ?></textarea></td>
+              </tr>
+              <tr class="py-2 px-4 mb-4">
+                <td><label for="" class="text-gray-700 dark:text-gray-200">Contact No:</label></td>
+                <td><input type="number" class="form-control" name="contact" placeholder="Enter your contact" value="<?php echo $fet['contact'] ?>"></td>
+              </tr>
+              <tr class="py-2 px-4 mb-4">
+                <td><label for="" class="text-gray-700 dark:text-gray-200">Vacancy:</label></td>
+                <td><input type="number" class="form-control" name="vacancy" placeholder="Enter the no of Vacancy" value="<?php echo $fet['vacancy'] ?>"></td>
+              </tr>
+              <tr class="py-2 px-4 mb-4">
+                <td><label for="" class="text-gray-700 dark:text-gray-200">Last Date:</label></td>
+                <td><input type="date" id="dateInput" class="form-control" name="lastdate" value="<?php echo $fet['lastdate'] ?>"></td>
+              </tr>
+              <tr class="py-2 px-4 mb-4">
+                <td colspan="2" style="text-align: center;"><button type="submit" name="update" id="update" class="btn btn-primary">Submit</button></td>
+              </tr>
+            </table>
           </form>
         </div>
+      </main>
+
     </div>
-  </div>
-  </main>
-  </div>
   </div>
 </body>
 

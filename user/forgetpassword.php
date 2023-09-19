@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Forget Password</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="path/to/font-awesome/css/all.min.css"> <!-- Add the path to Font Awesome CSS -->
@@ -75,7 +75,7 @@
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <div class="login-box">
-                    <h2>Recover Password</h2>
+                    <h2>Forgot Password</h2>
                     <hr>
                     <form action="mail.php" method="post" id="login-form">
                         <div class="form-group">
